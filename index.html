@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />
   <title>MG 銘勁 × JC PARK｜桃園限定賞車優惠</title>
-  <meta name="description" content="MG 銘勁桃園展示中心 × JC PARK 商場獨家限定優惠，即日起至 7/31，預約賞車即享精美好禮。" />
+  <meta name="description" content="MG 銘勁桃園展示中心 × JC PARK 春日店獨家限定優惠，7 月限定，預約賞車即享精美好禮。" />
 
   <!-- GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-J44D12Q7X8"></script>
@@ -13,14 +13,7 @@
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-    gtag('config', 'G-J44D12Q7X8', {
-      send_page_view: true,
-      custom_map: {
-        dimension1: 'campaign',
-        dimension2: 'button_location',
-        dimension3: 'gift_name'
-      }
-    });
+    gtag('config', 'G-J44D12Q7X8', { send_page_view: true });
   </script>
 
   <link rel="stylesheet" href="css/style.css" />
@@ -49,12 +42,11 @@
   <section class="hero">
     <div class="hero-tag">桃園展示中心 × JC PARK 獨家優惠</div>
     <h1 class="hero-title">
-      掃碼即享<br />
-      <span class="hero-highlight">賞車好禮</span>
+      全車系<br />
+      <span class="hero-highlight">超規滿配</span>
     </h1>
-    <p class="hero-sub">2026 年 7 月限定，名額有限</p>
+    <p class="hero-sub">7 月 JC Park 春日店限定　到場即享賞車好禮</p>
 
-    <!-- Countdown -->
     <div class="countdown-wrapper" id="countdown-wrapper">
       <div class="countdown-label">距離活動結束</div>
       <div class="countdown" id="countdown">
@@ -80,109 +72,171 @@
       </div>
     </div>
 
-    <div class="hero-cta-group">
-      <a
-        href="https://forms.office.com/r/wYkaLkgUDg"
-        class="btn btn-primary"
-        id="btn-booking-hero"
-        data-location="hero"
-        target="_blank"
-        rel="noopener"
-      >
-        立即預約賞車
-      </a>
+    <a
+      href="https://forms.office.com/r/wYkaLkgUDg"
+      class="btn btn-primary btn-hero"
+      id="btn-booking-hero"
+      data-location="hero"
+      target="_blank"
+      rel="noopener"
+    >
+      立即預約賞車
+    </a>
+  </section>
+
+  <!-- ══════════════════════════════
+       OFFERS — 三個轉換誘因
+  ══════════════════════════════ -->
+  <section class="offers" id="offers">
+    <div class="section-header">
+      <h2 class="section-title">專屬優惠</h2>
+      <p class="section-sub">掃碼到場，三重好禮等你</p>
+    </div>
+
+    <!-- 賞車禮 -->
+    <div class="offer-card" id="offer-gift">
+      <div class="offer-img-wrap">
+        <img
+          src="assets/images/gift-show.jpg"
+          alt="賞車禮"
+          class="offer-img"
+          onerror="this.parentElement.classList.add('offer-img--fallback')"
+        />
+        <div class="offer-img-overlay">
+          <span class="offer-pill offer-pill--gold">賞車禮</span>
+        </div>
+      </div>
+      <div class="offer-body">
+        <h3 class="offer-title">填寫賞車人資訊，到店即享好禮</h3>
+        <p class="offer-desc">留下賞車人預約資訊，到店出示畫面，即可領取精美好禮，名額有限。</p>
+        <a
+          href="https://forms.office.com/r/wYkaLkgUDg"
+          class="offer-cta"
+          id="btn-offer-gift"
+          data-location="offer_gift"
+          target="_blank"
+          rel="noopener"
+        >
+          立即獲取好禮資格 ›
+        </a>
+      </div>
+    </div>
+
+    <!-- 試乘禮 -->
+    <div class="offer-card" id="offer-drive">
+      <div class="offer-img-wrap">
+        <img
+          src="assets/images/gift-drive.jpg"
+          alt="試乘禮"
+          class="offer-img"
+          onerror="this.parentElement.classList.add('offer-img--fallback')"
+        />
+        <div class="offer-img-overlay">
+          <span class="offer-pill offer-pill--red">試乘禮</span>
+        </div>
+      </div>
+      <div class="offer-body">
+        <h3 class="offer-title">完成試乘，再享專屬好禮</h3>
+        <p class="offer-desc">完成試乘體驗，加贈試乘專屬好禮。</p>
+      </div>
+    </div>
+
+    <!-- 購車優惠 -->
+    <div class="offer-card offer-card--purchase" id="offer-purchase">
+      <div class="offer-purchase-grid">
+        <div class="purchase-cell" id="purchase-zs">
+          <img
+            src="assets/images/offer-zs.jpg"
+            alt="ZS 購車優惠"
+            class="purchase-img"
+            onerror="this.parentElement.classList.add('purchase-img--fallback')"
+          />
+          <div class="purchase-label">MG ZS</div>
+        </div>
+        <div class="purchase-cell" id="purchase-hs">
+          <img
+            src="assets/images/offer-hs.jpg"
+            alt="HS 購車優惠"
+            class="purchase-img"
+            onerror="this.parentElement.classList.add('purchase-img--fallback')"
+          />
+          <div class="purchase-label">MG HS</div>
+        </div>
+        <div class="purchase-cell" id="purchase-g50">
+          <img
+            src="assets/images/offer-g50.jpg"
+            alt="G50 PLUS 購車優惠"
+            class="purchase-img"
+            onerror="this.parentElement.classList.add('purchase-img--fallback')"
+          />
+          <div class="purchase-label">G50 PLUS</div>
+        </div>
+        <div class="purchase-pill-wrap">
+          <span class="offer-pill offer-pill--gray">購車優惠</span>
+        </div>
+      </div>
+      <div class="offer-body">
+        <h3 class="offer-title">本月入主優惠方案</h3>
+        <p class="offer-desc">ZS / HS / G50 PLUS 本月限定購車優惠，點擊各車型查看詳情。</p>
+        <a
+          href="https://forms.office.com/r/wYkaLkgUDg"
+          class="offer-cta"
+          id="btn-offer-purchase"
+          data-location="offer_purchase"
+          target="_blank"
+          rel="noopener"
+        >
+          查看購車方案 ›
+        </a>
+      </div>
     </div>
   </section>
 
   <!-- ══════════════════════════════
-       CAR MODELS
+       MG 熱門車款（橫向滑動）
   ══════════════════════════════ -->
   <section class="models" id="models">
-    <div class="section-header">
-      <h2 class="section-title">本次展示車型</h2>
-      <p class="section-sub">兩款旗艦，現場近距離體驗</p>
+    <div class="section-header models-header">
+      <h2 class="section-title">MG 熱門車款</h2>
+      <p class="section-sub">左右滑動探索</p>
     </div>
 
-    <div class="model-tabs">
-      <button class="tab-btn active" data-model="zs" aria-selected="true">MG ZS</button>
-      <button class="tab-btn" data-model="g50" aria-selected="false">G50 PLUS</button>
-    </div>
-
-    <!-- MG ZS -->
-    <div class="model-card active" id="model-zs">
-      <div class="model-img-wrap">
-        <img src="assets/images/mg-cars-banner.jpg" alt="MG ZS" class="model-img model-img--zs" />
-      </div>
-      <div class="model-info">
-        <h3 class="model-name">MG ZS</h3>
-        <p class="model-tagline">都會 SUV 新定義</p>
-        <ul class="model-features">
-          <li>智慧安全輔助系統</li>
-          <li>10.1 吋懸浮中控螢幕</li>
-          <li>全景天窗 / 360° 環景</li>
-          <li>ADAS 主動輔助套件</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- G50 PLUS -->
-    <div class="model-card" id="model-g50">
-      <div class="model-img-wrap">
-        <img src="assets/images/mg-cars-banner.jpg" alt="G50 PLUS" class="model-img model-img--g50" />
-      </div>
-      <div class="model-info">
-        <h3 class="model-name">G50 PLUS</h3>
-        <p class="model-tagline">七人座旗艦 MPV</p>
-        <ul class="model-features">
-          <li>寬敞七人座艙設計</li>
-          <li>電動滑門 / 氛圍燈</li>
-          <li>L2 自動輔助駕駛</li>
-          <li>家庭首選，豪華質感</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════
-       OFFER
-  ══════════════════════════════ -->
-  <section class="offer" id="offer">
-    <div class="offer-inner">
-      <div class="offer-tag">JC PARK 掃碼專屬</div>
-      <h2 class="offer-title">預約賞車，帶走好禮</h2>
-      <p class="offer-desc">
-        即日起至 7/31，憑此頁預約賞車<br />
-        到場即可領取精美限定好禮
-      </p>
-
-      <!-- Gift reveal -->
-      <div class="gift-reveal" id="gift-reveal">
-        <button class="gift-btn" id="gift-btn" aria-expanded="false">
-          <span class="gift-icon">🎁</span>
-          <span class="gift-btn-text">點擊查看你的專屬好禮</span>
-          <span class="gift-arrow">›</span>
-        </button>
-        <div class="gift-content" id="gift-content" aria-hidden="true">
-          <div class="gift-items">
-            <div class="gift-item gift-item--single">
-              <span class="gift-emoji">🎁</span>
-              <span class="gift-name">精美好禮</span>
-            </div>
-          </div>
-          <p class="gift-note">* 數量有限，送完為止</p>
+    <div class="models-scroll">
+      <div class="model-card">
+        <div class="model-img-wrap">
+          <img src="assets/images/mg-cars-banner.jpg" alt="MG ZS" class="model-img model-img--zs" />
+        </div>
+        <div class="model-info">
+          <h3 class="model-name">MG ZS</h3>
+          <p class="model-tagline">都會 SUV 新定義</p>
+          <p class="model-price">59.9 萬起</p>
+          <p class="model-price-note">含貨物稅優惠</p>
         </div>
       </div>
 
-      <a
-        href="https://forms.office.com/r/wYkaLkgUDg"
-        class="btn btn-primary btn-large"
-        id="btn-booking-offer"
-        data-location="offer"
-        target="_blank"
-        rel="noopener"
-      >
-        立即預約賞車
-      </a>
+      <div class="model-card">
+        <div class="model-img-wrap">
+          <img src="assets/images/mg-cars-banner.jpg" alt="MG HS" class="model-img model-img--hs" />
+        </div>
+        <div class="model-info">
+          <h3 class="model-name">MG HS</h3>
+          <p class="model-tagline">旗艦 SUV 頂峰之選</p>
+          <p class="model-price">75.9 萬起</p>
+          <p class="model-price-note">含貨物稅優惠</p>
+        </div>
+      </div>
+
+      <div class="model-card">
+        <div class="model-img-wrap">
+          <img src="assets/images/mg-cars-banner.jpg" alt="G50 PLUS" class="model-img model-img--g50" />
+        </div>
+        <div class="model-info">
+          <h3 class="model-name">G50 PLUS</h3>
+          <p class="model-tagline">七人座旗艦 MPV</p>
+          <p class="model-price">98.5 萬起</p>
+          <p class="model-price-note">含貨物稅優惠</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -252,7 +306,7 @@
     </a>
     <a
       href="https://maps.google.com/?q=桃園市桃園區春日路630號"
-      class="btn btn-ghost sticky-nav"
+      class="btn btn-ghost sticky-ghost"
       id="btn-nav"
       target="_blank"
       rel="noopener"
@@ -261,7 +315,7 @@
     </a>
     <a
       href="tel:033566616"
-      class="btn btn-ghost sticky-call"
+      class="btn btn-ghost sticky-ghost"
       id="btn-call-sticky"
     >
       📞 電話

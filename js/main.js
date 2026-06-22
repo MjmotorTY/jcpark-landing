@@ -8,38 +8,28 @@ function trackEvent(name, params) {
 }
 
 /* ══════════════════════════════
-   Countdown Timer
-   Target: 2026-07-31 23:59:59 (Asia/Taipei)
+   Countdown Timer — 2026-07-31 23:59:59
 ══════════════════════════════ */
 (function initCountdown() {
-  var target = new Date('2026-07-31T23:59:59+08:00').getTime();
-
-  var elDays    = document.getElementById('cd-days');
-  var elHours   = document.getElementById('cd-hours');
-  var elMinutes = document.getElementById('cd-minutes');
-  var elSeconds = document.getElementById('cd-seconds');
-  var wrapper   = document.getElementById('countdown-wrapper');
+  var target  = new Date('2026-07-31T23:59:59+08:00').getTime();
+  var elDays  = document.getElementById('cd-days');
+  var elHrs   = document.getElementById('cd-hours');
+  var elMins  = document.getElementById('cd-minutes');
+  var elSecs  = document.getElementById('cd-seconds');
+  var wrapper = document.getElementById('countdown-wrapper');
 
   function pad(n) { return String(n).padStart(2, '0'); }
 
   function tick() {
-    var now = Date.now();
-    var diff = target - now;
-
+    var diff = target - Date.now();
     if (diff <= 0) {
       wrapper.innerHTML = '<p class="countdown-expired">活動已結束，感謝您的參與</p>';
       return;
     }
-
-    var days    = Math.floor(diff / 86400000);
-    var hours   = Math.floor((diff % 86400000) / 3600000);
-    var minutes = Math.floor((diff % 3600000) / 60000);
-    var seconds = Math.floor((diff % 60000) / 1000);
-
-    elDays.textContent    = days;
-    elHours.textContent   = pad(hours);
-    elMinutes.textContent = pad(minutes);
-    elSeconds.textContent = pad(seconds);
+    elDays.textContent = Math.floor(diff / 86400000);
+    elHrs.textContent  = pad(Math.floor((diff % 86400000) / 3600000));
+    elMins.textContent = pad(Math.floor((diff % 3600000) / 60000));
+    elSecs.textContent = pad(Math.floor((diff % 60000) / 1000));
   }
 
   tick();
@@ -47,103 +37,101 @@ function trackEvent(name, params) {
 })();
 
 /* ══════════════════════════════
-   Car Model Tabs
+   CTA Booking Buttons
 ══════════════════════════════ */
-(function initTabs() {
-  var tabs  = document.querySelectorAll('.tab-btn');
-  var cards = document.querySelectorAll('.model-card');
-
-  tabs.forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      var target = btn.dataset.model;
-
-      tabs.forEach(function(t) {
-        t.classList.remove('active');
-        t.setAttribute('aria-selected', 'false');
-      });
-      cards.forEach(function(c) { c.classList.remove('active'); });
-
-      btn.classList.add('active');
-      btn.setAttribute('aria-selected', 'true');
-      document.getElementById('model-' + target).classList.add('active');
-
-      trackEvent('click_offer', { offer_type: 'model_tab_' + target });
-    });
-  });
-})();
-
-/* ══════════════════════════════
-   Gift Reveal
-══════════════════════════════ */
-(function initGiftReveal() {
-  var btn     = document.getElementById('gift-btn');
-  var content = document.getElementById('gift-content');
-  if (!btn || !content) return;
-
-  var revealed = false;
-
-  btn.addEventListener('click', function() {
-    var isOpen = content.classList.toggle('open');
-    btn.setAttribute('aria-expanded', String(isOpen));
-    content.setAttribute('aria-hidden', String(!isOpen));
-
-    if (isOpen && !revealed) {
-      revealed = true;
-      trackEvent('show_gift_screen', { gift_name: 'jcpark_july_gift_set' });
-    }
-  });
-})();
-
-/* ══════════════════════════════
-   CTA Button Tracking
-══════════════════════════════ */
-(function initCTATracking() {
-  /* Booking buttons */
-  document.querySelectorAll('[id^="btn-booking"]').forEach(function(el) {
+(function initBookingTracking() {
+  document.querySelectorAll('[id^="btn-booking"], [id^="btn-offer-gift"]').forEach(function(el) {
     el.addEventListener('click', function() {
       trackEvent('click_trial_booking', {
         button_location: el.dataset.location || 'unknown'
       });
     });
   });
+})();
 
-  /* Call buttons */
-  document.querySelectorAll('[id^="btn-call"]').forEach(function(el) {
+/* ══════════════════════════════
+   Offer Block Tracking
+   (試乘禮、購車優惠、車型卡)
+══════════════════════════════ */
+(function initOfferTracking() {
+  var offerIds = ['offer-drive', 'offer-purchase', 'btn-offer-purchase',
+                  'purchase-zs', 'purchase-hs', 'purchase-g50'];
+
+  offerIds.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
     el.addEventListener('click', function() {
-      trackEvent('click_call', { phone_number: '03XXXXXXXX' });
+      trackEvent('click_offer', { offer_type: id });
     });
   });
 
-  /* Navigation button */
-  var btnNav = document.getElementById('btn-nav');
-  if (btnNav) {
-    btnNav.addEventListener('click', function() {
+  document.querySelectorAll('.model-card').forEach(function(card) {
+    card.addEventListener('click', function() {
+      var name = card.querySelector('.model-name');
+      trackEvent('click_offer', { offer_type: 'model_' + (name ? name.textContent.trim() : 'unknown') });
+    });
+  });
+})();
+
+/* ══════════════════════════════
+   Gift Screen (賞車禮區塊曝光)
+══════════════════════════════ */
+(function initGiftTracking() {
+  var offerGift = document.getElementById('offer-gift');
+  if (!offerGift) return;
+
+  var fired = false;
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting && !fired) {
+        fired = true;
+        trackEvent('show_gift_screen', { gift_name: 'jcpark_july_gift' });
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+
+  observer.observe(offerGift);
+})();
+
+/* ══════════════════════════════
+   Call Buttons
+══════════════════════════════ */
+(function initCallTracking() {
+  document.querySelectorAll('[id^="btn-call"]').forEach(function(el) {
+    el.addEventListener('click', function() {
+      trackEvent('click_call', { phone_number: '033566616' });
+    });
+  });
+})();
+
+/* ══════════════════════════════
+   Navigation Button
+══════════════════════════════ */
+(function initNavTracking() {
+  var btn = document.getElementById('btn-nav');
+  if (btn) {
+    btn.addEventListener('click', function() {
       trackEvent('click_navigation', { map_provider: 'google' });
     });
   }
 })();
 
 /* ══════════════════════════════
-   Scroll Depth Tracking
+   Scroll Depth
 ══════════════════════════════ */
 (function initScrollDepth() {
   var milestones = [25, 50, 75, 100];
   var fired = {};
-
-  function getScrollPercent() {
-    var el   = document.documentElement;
-    var body = document.body;
-    var scrollTop  = el.scrollTop  || body.scrollTop;
-    var scrollH    = (el.scrollHeight || body.scrollHeight) - el.clientHeight;
-    return scrollH > 0 ? Math.round((scrollTop / scrollH) * 100) : 0;
-  }
 
   var ticking = false;
   window.addEventListener('scroll', function() {
     if (ticking) return;
     ticking = true;
     requestAnimationFrame(function() {
-      var pct = getScrollPercent();
+      var el = document.documentElement;
+      var scrollH = (el.scrollHeight - el.clientHeight);
+      var pct = scrollH > 0 ? Math.round((el.scrollTop / scrollH) * 100) : 0;
       milestones.forEach(function(m) {
         if (!fired[m] && pct >= m) {
           fired[m] = true;
@@ -156,12 +144,11 @@ function trackEvent(name, params) {
 })();
 
 /* ══════════════════════════════
-   Time on Page (beforeunload)
+   Time on Page
 ══════════════════════════════ */
 (function initTimeOnPage() {
   var start = Date.now();
   window.addEventListener('pagehide', function() {
-    var seconds = Math.round((Date.now() - start) / 1000);
-    trackEvent('time_on_page', { seconds_on_page: seconds });
+    trackEvent('time_on_page', { seconds_on_page: Math.round((Date.now() - start) / 1000) });
   });
 })();
