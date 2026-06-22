@@ -158,7 +158,7 @@ img { display: block; max-width: 100%; }
 .brand-logo { display: flex; align-items: center; }
 
 .brand-logo-img {
-  height: 30px;
+  height: 38px;
   width: auto;
   object-fit: contain;
 }
