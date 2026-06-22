@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="css/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Manrope:wght@400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
 
@@ -29,8 +29,16 @@
   <header class="site-header">
     <div class="header-inner">
       <div class="brand-logo">
-        <span class="brand-mg">MG</span>
-        <span class="brand-name">銘勁汽車</span>
+        <img
+          src="assets/images/logo.png"
+          alt="MG 銘勁汽車"
+          class="brand-logo-img"
+          onerror="this.style.display='none'; document.getElementById('brand-text').style.display='flex';"
+        />
+        <span class="brand-text" id="brand-text" style="display:none;">
+          <span class="brand-mg">MG</span>
+          <span class="brand-name">銘勁汽車</span>
+        </span>
       </div>
       <div class="header-badge">JC PARK 限定</div>
     </div>
@@ -52,22 +60,22 @@
       <div class="countdown" id="countdown">
         <div class="countdown-unit">
           <span class="countdown-num" id="cd-days">--</span>
-          <span class="countdown-text">天</span>
+          <span class="countdown-text">DAYS</span>
         </div>
         <span class="countdown-sep">:</span>
         <div class="countdown-unit">
           <span class="countdown-num" id="cd-hours">--</span>
-          <span class="countdown-text">時</span>
+          <span class="countdown-text">HRS</span>
         </div>
         <span class="countdown-sep">:</span>
         <div class="countdown-unit">
           <span class="countdown-num" id="cd-minutes">--</span>
-          <span class="countdown-text">分</span>
+          <span class="countdown-text">MIN</span>
         </div>
         <span class="countdown-sep">:</span>
         <div class="countdown-unit">
           <span class="countdown-num" id="cd-seconds">--</span>
-          <span class="countdown-text">秒</span>
+          <span class="countdown-text">SEC</span>
         </div>
       </div>
     </div>
@@ -141,52 +149,55 @@
       </div>
     </div>
 
-    <!-- 購車優惠 -->
+    <!-- 購車優惠（橫向滑動，三款各自連結） -->
     <div class="offer-card offer-card--purchase" id="offer-purchase">
-      <div class="offer-purchase-grid">
-        <div class="purchase-cell" id="purchase-zs">
-          <img
-            src="assets/images/offer-zs.jpg"
-            alt="ZS 購車優惠"
-            class="purchase-img"
-            onerror="this.parentElement.classList.add('purchase-img--fallback')"
-          />
-          <div class="purchase-label">MG ZS</div>
-        </div>
-        <div class="purchase-cell" id="purchase-hs">
-          <img
-            src="assets/images/offer-hs.jpg"
-            alt="HS 購車優惠"
-            class="purchase-img"
-            onerror="this.parentElement.classList.add('purchase-img--fallback')"
-          />
-          <div class="purchase-label">MG HS</div>
-        </div>
-        <div class="purchase-cell" id="purchase-g50">
-          <img
-            src="assets/images/offer-g50.jpg"
-            alt="G50 PLUS 購車優惠"
-            class="purchase-img"
-            onerror="this.parentElement.classList.add('purchase-img--fallback')"
-          />
-          <div class="purchase-label">G50 PLUS</div>
-        </div>
-        <div class="purchase-pill-wrap">
-          <span class="offer-pill offer-pill--gray">購車優惠</span>
-        </div>
-      </div>
-      <div class="offer-body">
+      <div class="offer-body offer-body--purchase">
+        <span class="offer-pill offer-pill--gray">購車優惠</span>
         <h3 class="offer-title">本月入主優惠方案</h3>
-        <p class="offer-desc">ZS / HS / G50 PLUS 本月限定購車優惠，點擊各車型查看詳情。</p>
+        <p class="offer-desc">ZS / HS / G50 PLUS 本月限定購車優惠，點擊車型查看方案。</p>
+      </div>
+      <div class="purchase-scroll">
         <a
           href="https://forms.office.com/r/wYkaLkgUDg"
-          class="offer-cta"
-          id="btn-offer-purchase"
-          data-location="offer_purchase"
+          class="purchase-card"
+          id="btn-offer-zs"
+          data-location="offer_zs"
           target="_blank"
           rel="noopener"
         >
-          查看購車方案 ›
+          <div class="purchase-img-wrap">
+            <img src="assets/images/offer-zs.jpg" alt="MG ZS 購車優惠" class="purchase-img"
+                 onerror="this.parentElement.classList.add('purchase-img--fallback')" />
+          </div>
+          <span class="purchase-card-label">MG ZS 購車優惠 ›</span>
+        </a>
+        <a
+          href="https://forms.office.com/r/wYkaLkgUDg"
+          class="purchase-card"
+          id="btn-offer-hs"
+          data-location="offer_hs"
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="purchase-img-wrap">
+            <img src="assets/images/offer-hs.jpg" alt="MG HS 購車優惠" class="purchase-img"
+                 onerror="this.parentElement.classList.add('purchase-img--fallback')" />
+          </div>
+          <span class="purchase-card-label">MG HS 購車優惠 ›</span>
+        </a>
+        <a
+          href="https://forms.office.com/r/wYkaLkgUDg"
+          class="purchase-card"
+          id="btn-offer-g50"
+          data-location="offer_g50"
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="purchase-img-wrap">
+            <img src="assets/images/offer-g50.jpg" alt="G50 PLUS 購車優惠" class="purchase-img"
+                 onerror="this.parentElement.classList.add('purchase-img--fallback')" />
+          </div>
+          <span class="purchase-card-label">G50 PLUS 購車優惠 ›</span>
         </a>
       </div>
     </div>
@@ -204,36 +215,39 @@
     <div class="models-scroll">
       <div class="model-card">
         <div class="model-img-wrap">
-          <img src="assets/images/mg-cars-banner.jpg" alt="MG ZS" class="model-img model-img--zs" />
+          <img src="assets/images/car-zs.jpg" alt="MG ZS" class="model-img"
+               onerror="this.parentElement.classList.add('model-img--fallback')" />
         </div>
         <div class="model-info">
           <h3 class="model-name">MG ZS</h3>
           <p class="model-tagline">都會 SUV 新定義</p>
-          <p class="model-price">59.9 萬起</p>
+          <p class="model-price">59.9<span class="model-price-unit">萬起</span></p>
           <p class="model-price-note">含貨物稅優惠</p>
         </div>
       </div>
 
       <div class="model-card">
         <div class="model-img-wrap">
-          <img src="assets/images/mg-cars-banner.jpg" alt="MG HS" class="model-img model-img--hs" />
+          <img src="assets/images/car-hs.jpg" alt="MG HS" class="model-img"
+               onerror="this.parentElement.classList.add('model-img--fallback')" />
         </div>
         <div class="model-info">
           <h3 class="model-name">MG HS</h3>
           <p class="model-tagline">旗艦 SUV 頂峰之選</p>
-          <p class="model-price">75.9 萬起</p>
+          <p class="model-price">75.9<span class="model-price-unit">萬起</span></p>
           <p class="model-price-note">含貨物稅優惠</p>
         </div>
       </div>
 
       <div class="model-card">
         <div class="model-img-wrap">
-          <img src="assets/images/mg-cars-banner.jpg" alt="G50 PLUS" class="model-img model-img--g50" />
+          <img src="assets/images/car-g50.jpg" alt="G50 PLUS" class="model-img"
+               onerror="this.parentElement.classList.add('model-img--fallback')" />
         </div>
         <div class="model-info">
           <h3 class="model-name">G50 PLUS</h3>
           <p class="model-tagline">七人座旗艦 MPV</p>
-          <p class="model-price">98.5 萬起</p>
+          <p class="model-price">98.5<span class="model-price-unit">萬起</span></p>
           <p class="model-price-note">含貨物稅優惠</p>
         </div>
       </div>
@@ -241,30 +255,30 @@
   </section>
 
   <!-- ══════════════════════════════
-       WHY US
+       WHY US — 選擇 MG 桃園所
   ══════════════════════════════ -->
   <section class="why-us">
-    <h2 class="section-title">為什麼來桃園展示中心</h2>
+    <h2 class="section-title">選擇 MG 桃園所</h2>
     <div class="why-grid">
       <div class="why-card">
         <span class="why-icon">🏆</span>
         <h3 class="why-title">專業顧問</h3>
-        <p class="why-desc">完整試駕體驗，無壓力諮詢</p>
+        <p class="why-desc">完整購車諮詢，貸款、保險、舊車處理，一條龍服務。</p>
       </div>
       <div class="why-card">
-        <span class="why-icon">📍</span>
-        <h3 class="why-title">就在 JC PARK 旁</h3>
-        <p class="why-desc">逛商場順路即可到訪</p>
+        <span class="why-icon">🏬</span>
+        <h3 class="why-title">MG 優選展示中心</h3>
+        <p class="why-desc">全台唯一商場合併，沈浸體驗全台最優選。</p>
       </div>
       <div class="why-card">
         <span class="why-icon">🎁</span>
-        <h3 class="why-title">到場即有禮</h3>
-        <p class="why-desc">限定好禮等你帶走</p>
+        <h3 class="why-title">來店即有禮</h3>
+        <p class="why-desc">透過此頁面來店即享限定好禮。</p>
       </div>
       <div class="why-card">
         <span class="why-icon">⚡</span>
         <h3 class="why-title">即刻預約</h3>
-        <p class="why-desc">30 秒完成預約，輕鬆方便</p>
+        <p class="why-desc">30 秒完成預約，體驗賓至如歸的賞車服務。</p>
       </div>
     </div>
   </section>
@@ -277,15 +291,15 @@
     <div class="store-details">
       <div class="store-row">
         <span class="store-icon">📍</span>
-        <span class="store-text">桃園市桃園區春日路 630 號（JC Park 二館）</span>
+        <span class="store-text">桃園市桃園區春日路 630 號（JC Park 二館 SUKIYA 旁）</span>
       </div>
       <div class="store-row">
         <span class="store-icon">⏰</span>
-        <span class="store-text">週一至週日　10:00 – 19:00</span>
+        <span class="store-text">週一至週日　09:00 – 21:00</span>
       </div>
       <div class="store-row">
         <span class="store-icon">📞</span>
-        <a href="tel:033566616" class="store-phone" id="btn-call">03-356-6616</a>
+        <a href="tel:033566616" class="store-phone" id="btn-call">(03) 356-6616</a>
       </div>
     </div>
   </section>

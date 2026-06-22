@@ -54,8 +54,7 @@ function trackEvent(name, params) {
    (試乘禮、購車優惠、車型卡)
 ══════════════════════════════ */
 (function initOfferTracking() {
-  var offerIds = ['offer-drive', 'offer-purchase', 'btn-offer-purchase',
-                  'purchase-zs', 'purchase-hs', 'purchase-g50'];
+  var offerIds = ['offer-drive', 'btn-offer-zs', 'btn-offer-hs', 'btn-offer-g50'];
 
   offerIds.forEach(function(id) {
     var el = document.getElementById(id);
